@@ -14,3 +14,4 @@ import "./submission-list";
 import "./extras/termynal";
 import "./terminal";
 import "./image-enlacer";
+import "./vscode-button-auth";
