@@ -92,7 +92,7 @@ export function extractAnswerData(exerciseContainer) {
   return answerData;
 }
 
-export function renderExercise(element, container, replacement) {
+export function renderExercise(element, container, replacement, show) {
   const root = document.createElement("div");
   ReactDOM.render(element, root);
 
@@ -102,7 +102,9 @@ export function renderExercise(element, container, replacement) {
     container.appendChild(root);
   }
 
-  showExercise(container);
+  if (show) {
+    showExercise(container);
+  }
 }
 
 export function showExercise(exerciseContainer) {
@@ -115,6 +117,7 @@ export const ExerciseType = {
   CSS: "css",
   CODE: "code",
   SELF: "self-assessed",
+  BUNDLE: "bundle",
 };
 
 export function getExerciseType(exerciseContainer) {
@@ -127,6 +130,8 @@ export function getExerciseType(exerciseContainer) {
     return ExerciseType.CSS;
   } else if (classes.contains("code-exercise")) {
     return ExerciseType.CODE;
+  } else if (classes.contains("bundle")) {
+    return ExerciseType.BUNDLE;
   } else {
     return ExerciseType.SELF;
   }
